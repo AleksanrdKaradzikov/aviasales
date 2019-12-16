@@ -49,12 +49,25 @@ export default class Aviasales extends React.Component {
   }
 
   getAllTickets = searchId => {
-    this.aviaServise.getTickets(searchId).then(tickets =>
+    this.aviaServise.getTickets(searchId).then(response => {
+      const newtTickets = response.data.tickets;
+      const { stop } = response.data;
+      if (stop) {
+        const { tickets } = this.state;
+        this.setState({
+          tickets: [...tickets, ...newtTickets],
+          loading: false,
+        });
+        return;
+      }
+
+      const { tickets } = this.state;
       this.setState({
-        tickets,
+        tickets: [...tickets, ...newtTickets],
         loading: false,
-      })
-    );
+      });
+      this.getAllTickets(searchId);
+    });
   };
 
   handleButttonClick = dataSort => {

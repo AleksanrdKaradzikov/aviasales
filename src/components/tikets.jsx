@@ -160,6 +160,6 @@ export default Tickets;
 Ticket.propTypes = {
   price: PropTypes.number,
   carrier: PropTypes.string,
-  segments: PropTypes.arr,
+  segments: PropTypes.func,
   animation: PropTypes.bool,
 };

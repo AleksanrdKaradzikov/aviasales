@@ -13,12 +13,8 @@ export default class AviasalesServise {
     const url = `https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`;
     try {
       const response = await axios.get(url);
-
-      if (response.data.stop === true) {
-        return response.data.tickets;
-      }
-      return this.getTickets(searchId);
-    } catch (error) {
+      return response;
+    } catch (err) {
       return this.getTickets(searchId);
     }
   }
