@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 import Tickets from './tikets';
 import Spiner from './spiner';
 
@@ -135,19 +136,13 @@ const renderTickets = (tickets, func) => {
   );
 };
 
-const TicketsWrapper = ({
-  sort,
-  handleButttonClick,
-  loading = false,
-  tikets = null,
-  handleResetFilter = false,
-}) => {
+const TicketsWrapper = ({ sort, handleButttonClick, loading, tickets, handleResetFilter }) => {
   const spiner = loading ? (
     <SpinerWrapper>
       <Spiner />
     </SpinerWrapper>
   ) : null;
-  const ticket = !loading ? renderTickets(tikets, handleResetFilter) : null;
+  const ticket = !loading ? renderTickets(tickets, handleResetFilter) : null;
   return (
     <TicketsWrapp>
       <ButtonsBlock>
@@ -170,6 +165,22 @@ const TicketsWrapper = ({
       {ticket}
     </TicketsWrapp>
   );
+};
+
+TicketsWrapper.defaultProps = {
+  loading: false,
+  tickets: null,
+  handleResetFilter: false,
+  sort: 'Cheap',
+  handleButttonClick: () => {},
+};
+
+TicketsWrapper.propTypes = {
+  sort: PropTypes.string,
+  handleButttonClick: PropTypes.func,
+  loading: PropTypes.bool,
+  tickets: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+  handleResetFilter: PropTypes.func,
 };
 
 export default TicketsWrapper;

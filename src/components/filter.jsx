@@ -96,7 +96,6 @@ const Filter = ({ handleCheckbox, filterState }) => {
 };
 
 export default Filter;
-
 Filter.defaultProps = {
   handleCheckbox: () => {},
   filterState: {},
@@ -104,5 +103,5 @@ Filter.defaultProps = {
 
 Filter.propTypes = {
   handleCheckbox: PropTypes.func,
-  filterState: PropTypes.object,
+  filterState: PropTypes.objectOf(PropTypes.bool),
 };

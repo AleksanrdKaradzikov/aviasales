@@ -26,9 +26,7 @@
     "curly": "error",
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off",
-    "onsistent-return": "off",
-    "react/prop-types": "off",
-    "react/forbid-prop-types": "off"
+    "onsistent-return": "off"
   },
   "settings": {
     "react": {

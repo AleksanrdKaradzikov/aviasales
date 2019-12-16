@@ -157,9 +157,14 @@ const Tickets = ({ price, carrier, segments }) => {
 
 export default Tickets;
 
-Ticket.propTypes = {
+Tickets.defaultProps = {
+  price: 0,
+  carrier: '',
+  segments: [{}],
+};
+
+Tickets.propTypes = {
   price: PropTypes.number,
   carrier: PropTypes.string,
-  segments: PropTypes.func,
-  animation: PropTypes.bool,
+  segments: PropTypes.arrayOf(PropTypes.object),
 };

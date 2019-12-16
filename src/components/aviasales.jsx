@@ -173,21 +173,9 @@ export default class Aviasales extends React.Component {
 
   render() {
     const { sort, loading, tickets, filterState } = this.state;
-    if (loading) {
-      return (
-        <>
-          <Filter handleCheckbox={this.handleCheckbox} filterState={filterState} />
-          <TicketsWrapper
-            sort={sort}
-            loading={loading}
-            handleButttonClick={this.handleButttonClick}
-          />
-        </>
-      );
-    }
-
     const filterValues = Object.values(filterState);
     let visibleTickets = null;
+
     if (filterValues.every(filter => filter === false)) {
       visibleTickets = tickets.length;
     } else {
@@ -201,7 +189,7 @@ export default class Aviasales extends React.Component {
           sort={sort}
           loading={loading}
           handleResetFilter={this.handleResetFilter}
-          tikets={visibleTickets}
+          tickets={visibleTickets}
           handleButttonClick={this.handleButttonClick}
         />
       </>
