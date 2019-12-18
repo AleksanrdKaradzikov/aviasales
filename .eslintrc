@@ -25,7 +25,6 @@
     "react/jsx-props-no-spreading": ["off"],
     "curly": "error",
     "no-underscore-dangle": "off",
-    "no-nested-ternary": "off",
     "onsistent-return": "off"
   },
   "settings": {

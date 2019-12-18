@@ -57,7 +57,7 @@ const TicketBodyRow = styled.div`
 
 const Opacity = keyframes`
    from {
-      opacity: 0.75; 
+      opacity: 0.9; 
     } 
 
     to {
@@ -77,12 +77,14 @@ const Ticket = styled.div`
 `;
 
 const getInfoShifting = stops => {
-  const shifting =
-    stops.length === 0
-      ? `0 пересадок`
-      : stops.length === 1
-      ? '1 пересадка'
-      : `${stops.length} пересадки`;
+  let shifting = '';
+  if (stops.length === 0) {
+    shifting = '0 пересадок';
+  } else if (stops.length === 1) {
+    shifting = '1 пересадка';
+  } else {
+    shifting = `${stops.length} пересадки`;
+  }
   const cities = stops.length === 0 ? `ПРЯМОЙ РЕЙС` : stops.map(code => `${code}`).join(', ');
   return (
     <>

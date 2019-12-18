@@ -179,7 +179,7 @@ export default class Aviasales extends React.Component {
     if (filterValues.every(filter => filter === false)) {
       visibleTickets = tickets.length;
     } else {
-      visibleTickets = sortedTickets(this.filtered(tickets), sort);
+      visibleTickets = sortedTickets(this.filtered(tickets.slice()), sort);
     }
 
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 import Tickets from './tikets';
 import Spiner from './spiner';
 
@@ -119,7 +120,7 @@ const renderTickets = (tickets, func) => {
   if (Array.isArray(tickets)) {
     return tickets.slice(0, 5).map(({ price, carrier, segments }) => {
       return (
-        <Tickets key={price + Math.random()} price={price} carrier={carrier} segments={segments} />
+        <Tickets key={`id_${uniqueId()}`} price={price} carrier={carrier} segments={segments} />
       );
     });
   }
@@ -131,7 +132,7 @@ const renderTickets = (tickets, func) => {
       <SmallText>
         Нажмите на название, чтобы выбрать фильтр или на кнопу ниже, чтобы сбросить его.
       </SmallText>
-      <RelaxBtn onClick={() => func()}>Расслабить фильтры</RelaxBtn>
+      <RelaxBtn onClick={func}>Расслабить фильтры</RelaxBtn>
     </WithoutFilterWrapp>
   );
 };
